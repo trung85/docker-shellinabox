@@ -21,3 +21,8 @@ shellinabox for docker based on alpine linux https://hub.docker.com/r/fhuegli/sh
  - **SIAB_SERVICE** Service strings to use for shellinabox, separated by whitespace. Defaults to local logins */:LOGIN*.
  - **SIAB_PKGS** Packages to be installed before shellinabox starts. Defaults to none.
  - **SIAB_SCRIPT** Script to download and run before shellinabox start. SSL verification is disabled. Defaults to none.
+
+
+docker build -t minhtrung/shellinabox -f Dockerfile .
+
+docker run -d --privileged -e SIAB_USER=admin -e SIAB_PASSWORD=admin111 -e SIAB_SUDO=true -e SIAB_SSL=true -p 4200:4200 minhtrung/shellinabox
