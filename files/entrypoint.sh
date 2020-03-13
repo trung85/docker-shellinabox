@@ -57,6 +57,13 @@ passwd -l root
 
 echo "Starting container .."
 if [ "$@" = "shellinabox" ]; then
+	echo "UPDATE PATH of go command"
+	set +e
+	export PATH=/usr/local/go/bin:$PATH
+	export PATH=/go/bin:$PATH
+	echo $PATH
+	set -e
+
 	echo "Executing: ${COMMAND}"
 	exec ${COMMAND}
 else
@@ -64,3 +71,5 @@ else
 	echo "Executing: ${@}"
 	exec $@
 fi
+
+

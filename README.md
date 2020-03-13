@@ -25,4 +25,8 @@ shellinabox for docker based on alpine linux https://hub.docker.com/r/fhuegli/sh
 
 docker build -t minhtrung/shellinabox -f Dockerfile .
 
-docker run -d --privileged -e SIAB_USER=admin -e SIAB_PASSWORD=admin111 -e SIAB_SUDO=true -e SIAB_SSL=true -p 4200:4200 minhtrung/shellinabox
+docker run -d --privileged -e SIAB_USER=admin -e SIAB_PASSWORD=admin -e SIAB_SUDO=true -e SIAB_SSL=false -v $HOME/.aws:~/.aws -p 4200:4200 minhtrung/shellinabox:latest
+
+
+
+docker run -d --privileged -e SIAB_USER=admin -e SIAB_PASSWORD=admin -e SIAB_HOME=/home/admin -e AWS_PROFILE=si-test -e SIAB_SUDO=true -e SIAB_SSL=false -v $HOME/.aws:/home/admin/.aws -p 4200:4200 minhtrung/shellinabox:latest
